@@ -148,6 +148,7 @@ module Rack
         when :rewrite
           # return [200, {}, {:content => env.inspect}]
           env['REQUEST_URI'] = interpreted_to
+          env['REQUEST_METHOD'] = 'GET'
           if q_index = interpreted_to.index('?')
             env['PATH_INFO'] = interpreted_to[0..q_index-1]
             env['QUERY_STRING'] = interpreted_to[q_index+1..interpreted_to.size-1]
